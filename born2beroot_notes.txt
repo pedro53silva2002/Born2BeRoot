@@ -1,0 +1,89 @@
+Operating systems:
+- Debian (30 years): free and open-software developed by the community-supported
+			Debian Project
+
+
+- Rocky (3 years): a downstream version of Red Hat operating system
+
+
+- Difference between Debian/Rocky: Debian, as an older software, can be more
+					user-friendly to new users, supporting
+					many libraries, filesystems and 
+					architeture. It is also better for personal
+					use while rocky is better for enterprise. 
+
+
+
+
+Pack managers:
+- apt: a collection of tools used to install, update, remove and otherwise manage
+	software packages on Debian and its derivative operating systems (including 
+	Ubunto and Linux Mint).
+
+
+- aptitude: a high-level front-end tool for package management
+
+
+- Difference between apt/aptitude: apt is a low-level package manager and aptitude
+					is high-level. This means that with apt
+					you gotta tell everything to it to work
+					while with aptitude it's automization
+					helps you with fixing issues and removing
+					unused packages or suggeste installations.
+
+
+
+
+(some title):
+- AppArmor:	Linux kernel security module that allows the system administrator
+		to restrict programs' capabilities with per-program profiles. Basically
+		tells what apps and service can the users use or if only the amdmin can
+		uses
+
+
+
+
+
+Firewalls:
+- UFW (Uncomplicated Firewall):  program for managing a netfilter firewall designed
+					to be easy to use.
+
+
+
+
+
+
+
+
+Other shit:
+- LVM (logical volume manager):	device mapped framework that provides logical 
+				volume management. Enables the combining of
+				multiple individual hard drives and/or disk
+				partitions into a single volume group (VG).
+
+
+- SSH (Secure Shell):	network protocol for operating network services securely
+			over an unsecured network between clients and hosts.
+
+
+- sudo:		a program for computer operating systems that enables users to run
+		programs with security privileges of another user
+
+
+- TTY mode (sudo): displays te file name of terminal connected to the standard
+			input. Its great to identify the terminal you're using	
+
+
+- Virtual Machines partitions:	divisions of virual storage that can be treated as
+				separate and distinct logical units within the
+				VM's environment
+		
+- Cron:				command line utility to schedule commands or scripts
+
+
+
+
+
+
+
+

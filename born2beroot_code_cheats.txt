@@ -1,0 +1,217 @@
+				PARTITIONS
+				
+lsblk:					see partitions in your virtual machine
+
+
+
+
+
+			      INSTALLING SUDO
+			      
+su -: 					command used to login as the root user
+apt-get update -y:			updates the information of packages you
+					you already have
+apt-get upgrade -y:			upgrades the packages to the latests
+					versions
+apt install sudo:			uses apt to install sudo
+usermod -aG sudo your_username:		adds user to the sudo group
+getent group sudo:			gets all users from sudo group
+sudo visudo:				open sudos files (validates syntax of the
+					file upon saving)
+your_username  	ALL=(ALL) ALL:		giving all priviliges to me (host=user command)
+
+
+
+
+
+			   INSTALLING GIT AND VIM
+			
+apt-get install git -y:			installs git on the VM
+git --version:				gets the version of git
+apt-get install vim -y:			installs vim on the VM
+vim --version:				gets the version of vim
+
+
+
+
+
+
+		  INSTALLING AND CONFIGURING SSH (SECURE SHELL HOST)
+
+sudo apt install openssh-server:	installs SSH on the VM
+sudo systemctl status ssh:		checks the SSH Server status
+sudo vim /etc/ssh/sshd_config:		vims the sshd_config file
+sudo grep Port /etc/ssh/sshd_config:	checks if the port settings are right
+sudo service ssh restart:		restarts the SSH Service
+
+
+
+
+
+		INSTALLING AND CONFIGURING UFW (UNCOMPLICATED FIREWALL)
+
+apt-get install ufw:			installs ufw on the VM
+sudo ufw enable:			enables the ufw
+sudo ufw status numbered:		checks ufw status
+sudo ufw allow ssh:			configures the Rules of ufw on SSH
+sudo ufw allow 4242:			configures the Rules of ufw on port 4242
+
+
+
+
+
+				CONNECTING TO SSH
+
+sudo systemctl restart ssh:		restarts the SSH Server
+sudo service sshd status:		checks the SSH status
+hostname -I:				sees the ip address of the VM
+ssh peferrei42@10.11.244.221 -p 4242:	opens a VM terminal on local terminal
+rm ~/.ssh/known_hosts:			removes this file in case of error in
+					connecting to the local terminal
+
+
+
+
+
+			CONTINUE CONFIGURATING YOUR VIRTUAL MACHINE
+
+sudo apt-get install libpam-pwquality:	installs the Password Quality Checking
+					Library
+sudo vim /etc/pam.d/common-password:	vims the file about password security file
+sudo vim /etc/login.defs:		vims the file about password validation
+sudo reboot:				restarts the system
+sudo groupadd user42:			creates the user42 group
+sudo groupadd evaluating:		creates the evaluating group
+getent group:				checks all groups and their users in the
+					system		
+cut -d: -f1 /etc/passwd:		checks all local users
+sudo adduser new_username:		adds a new user to the system
+sudo usermod -aG user42 your_username:	adds a user to the user42 group
+sudo usermod -aG evaluating your_new_username:	adds user to evaluating group
+getent group user42:			gets all users from user42 group
+getent group evaluating:		gets all users from evaluating group
+groups:					checks all groups in the system
+chage -l your_new_username:		checks password rules on the users
+cd ~/../:				goes to root folder
+cd var/log:				goes to var/log folder
+mkdir sudo:				creates a folder called sudo
+cd sudo && touch sudo.log:		creates the sudo.log file
+
+
+
+
+
+				CRONTAB CONFIGURATION
+				
+apt-get install -y net-tools:		installs the net-tools
+cd /usr/local/bin/:			goes to bin folder
+touch monitoring.sh:			creates the monitoring.sh file
+chmod 777 monitoring.sh:		gives file permission to read/write/
+					execute
+
+
+
+
+
+				VIRTUAL MACHINE SCRIPT
+
+ssh your_host_name42@127.0.0.1 -p 4242:	opens vm machine on local terminal
+cd /usr/local/bin:			goes to bin folder
+nano monitoring.sh:			same with vim and opens monitoring.sh file
+sudo visudo:				open sudos files (validates syntax of the
+					file upon saving)
+sudo reboot:				restarts vm
+sudo /usr/local/bin/monitoring.sh:	goes to monitoring.sh file
+sudo crontab -u root -e:		opens crontab
+*/10 * * * * /usr/local/bin/monitoring.sh:	adds a rule that works every 10
+						minutes
+
+
+
+
+ss
+
+
+
+
+
+
+
+				  OTHER COMMANDS
+shasum born2beroot.vdi:	gets the id of the vm
+hostnamectl set-hostname new_hostname:		change the current hostname
+sudo nano /etc/hosts:	change the current hostname in the file
+dpkg -l | grep sudo –:	shows that sudo is installed
+sudo ufw allow port-id:	adds a port to the network
+sudo ufw delete rule number: deletes a port from the network
+uname -a:		checks the operating system
+sudo userdel username:	deletes a user
+sudo groupdel groupname:deletes a group
+exit: 			exit the root and goes back to user terminal
+clear: 			cleans the terminal interface
+usermod:		command used to modify or change any attributes
+			of a already created user account via command line
+-aG:			append (a) to a group (G)
+getent(get entries):	gets information from a database
+systemctl(control):	used to start,restart,status,etc of services(like
+			SSH)	
+grep:			searches from a string in a groups of files
+-I:			display all the computer's network addresses		
+cut:			cuts a line into sections
+-d:			specifies the delimiter you want to use to cut
+-f1:			selects the first field (of passwd file in this case)
+chage:			command to view and change the user password expiry info
+-l:			option to view the account aging information
+-y:			automatically say yes to any prompt when installing
+chmod:			command use to change the permissions of a file
+777:			with chmod it gives the file permission to read,
+			write and execute
+crontab:		list of commands to run something on a regular schedule
+-u:			specifies a user
+-e:			creates a new crontab if has not been made yet
+
+
+
+
+
+				    SCRIPT
+grep:			looks for a regular expression or a string in a text file
+			(^ is to find lines that start with that string, use -v
+			to display the lines that don't match the pattern)
+awk:			a program language designed for text processing and data
+			extraction
+uniq:			deletes repeated lines in a file (use sort to make
+			repeated lines adjacent)
+wc:			command line to display number of lines,words andb bytes
+			in a file (-l just to see the number of lines, -w to coun
+			the number of words)
+free:			displays information about memoru usage (-m to put it
+			into megabytes)			
+df:			displays information about disk space usage (-B to
+			specify the block size, -G to set size it to Gigabytes
+			and -M to size it to Megabytes)
+top:			tool used to show real-time information about the computer
+			like CPU and memory (-b means "batch mode" which makes
+			show the output once and then stop and -n1 only takes one
+			snapshot of the information)
+cut:			extracts specific sections from a line (-c is say you are
+			working with positions and 9- its to start from the 9th
+			character to the end of the line)
+xargs:			used to execute command lines from standard input
+who:			displays the time and date of the last boot (-b to
+			specifically retrieve the last boot time)
+-eq:			used in conditions is the same as ==
+ss:			used to show socket information (the -n is to not resolve
+			service names, the -e to show detailed socket information,
+			the -o to show timer information, the -p to show process
+			using socket, the -t to display tcp sockets only, state
+			ESTABLISHED to help filter only the established TCP
+			connections)
+users:			gets the list of users currently logged
+ip:			tool for network management (link deals with network
+			interfaces, show displays the information)
+journalctl:		query and displays logs from the journal (use _COMM=sudo
+			to restrict the output entries where the 'COMM' field is
+			sudo)
+wall:			sends a message to all currently logged users in the
+			system
